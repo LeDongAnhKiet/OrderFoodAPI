@@ -10,13 +10,20 @@ public class FoodController {
     @Autowired
     private IFoodService foodService;
     @PostMapping("/food")
-    public FoodDTO createNew(@RequestBody FoodDTO model) {
+    public FoodDTO createFood(@RequestBody FoodDTO model) {
 
         return foodService.save(model);
 
     }
-    @GetMapping("/food")
-    public String test(){
-        return "nhật ngu";
+    @PutMapping ("/food/{id}")
+    public FoodDTO updateFood(@RequestBody FoodDTO model, @PathVariable("id") int id)
+    {
+        model.setId(id);
+        return foodService.save(model);
+    }
+    @DeleteMapping("/food")
+    public void deleteFood (@RequestBody int[] ids)
+    {
+        foodService.delete(ids);
     }
 }

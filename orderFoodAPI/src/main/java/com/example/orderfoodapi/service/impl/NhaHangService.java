@@ -18,8 +18,22 @@ public class NhaHangService implements INhaHangService {
     private NhaHangRepository nhaHangRepository;
     @Override
     public NhahangDTO save(NhahangDTO nhahangDTO) {
-        Nhahang nhahang = nhaHangConverter.toEntity(nhahangDTO);
+        Nhahang nhahang = new Nhahang();
+        if(nhahangDTO.getId() != null){
+            Nhahang oldNhahang = nhaHangRepository.findNhahangById(nhahangDTO.getId());
+            nhahang = nhaHangConverter.toEntity(nhahangDTO,oldNhahang);
+        }else{
+            nhahang = nhaHangConverter.toEntity(nhahangDTO);
+        }
         nhahang = nhaHangRepository.save(nhahang);
         return nhaHangConverter.toDTO(nhahang);
+    }
+
+    @Override
+    public void delete(int[] ids) {
+        for(int item : ids)
+        {
+            nhaHangRepository.deleteById(item);
+        }
     }
 }

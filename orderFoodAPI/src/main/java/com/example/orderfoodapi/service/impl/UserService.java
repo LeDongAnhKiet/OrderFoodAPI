@@ -16,8 +16,22 @@ public class UserService implements IUserService {
     private UserReponsitory userReponsitory;
     @Override
     public UserDTO save(UserDTO userDTO) {
-        User user = userConverter.toEntity(userDTO);
+        User user = new User();
+        if(userDTO.getId() != null){
+            User oldUser = userReponsitory.findUserById(userDTO.getId());
+            user = userConverter.toEntity(userDTO,oldUser);
+        }
+        else {
+            user = userConverter.toEntity(userDTO);
+        }
         user = userReponsitory.save(user);
         return userConverter.toDTO(user);
+    }
+
+    @Override
+    public void delete(int[] ids) {
+        for(int item: ids){
+            userReponsitory.deleteById(item);
+        }
     }
 }

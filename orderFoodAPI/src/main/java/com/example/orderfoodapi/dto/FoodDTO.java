@@ -2,12 +2,16 @@ package com.example.orderfoodapi.dto;
 
 import com.example.orderfoodapi.entity.Loaifood;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class FoodDTO {
     private Integer id;
     private String ten;
     private Double giaTien;
     private String avatar;
     private Integer idLoai;
+
 
     public Integer getId() {
         return this.id;

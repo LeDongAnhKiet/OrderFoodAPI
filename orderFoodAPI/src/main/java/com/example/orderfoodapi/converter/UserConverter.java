@@ -23,7 +23,9 @@ public class UserConverter {
     public UserDTO toDTO (User entity)
     {
         UserDTO user = new UserDTO();
-        user.setId(entity.getId());
+        if(entity.getId() != null){
+            user.setId(entity.getId());
+        }
         user.setTaiKhoan(entity.getTaiKhoan());
         user.setMatKhau(entity.getMatKhau());
         user.setDiaChi(entity.getDiaChi());
@@ -31,6 +33,19 @@ public class UserConverter {
         user.setQuyen(entity.getQuyen());
         user.setEmail(entity.getEmail());
         user.setAvatar(entity.getAvatar());
+        return user;
+    }
+
+    public User toEntity (UserDTO userDTO, User user)
+    {
+        user.setId(userDTO.getId());
+        user.setTaiKhoan(userDTO.getTaiKhoan());
+        user.setMatKhau(userDTO.getMatKhau());
+        user.setDiaChi(userDTO.getDiaChi());
+        user.setSoDienThoai(userDTO.getSoDienThoai());
+        user.setQuyen(userDTO.getQuyen());
+        user.setEmail(userDTO.getEmail());
+        user.setAvatar(userDTO.getAvatar());
         return user;
     }
 }

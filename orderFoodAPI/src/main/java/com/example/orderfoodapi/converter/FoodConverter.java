@@ -17,10 +17,20 @@ public class FoodConverter {
 
     public FoodDTO toDTO(Food entity){
         FoodDTO food = new FoodDTO();
-        food.setId(entity.getId());
+        if(entity.getId() != null){
+            food.setId(entity.getId());
+        }
         food.setTen(entity.getTen());
         food.setGiaTien(entity.getGiaTien());
         food.setAvatar(entity.getAvatar());
+        return food;
+    }
+
+    public Food toEntity(FoodDTO foodDTO, Food food){
+        food.setId(foodDTO.getId());
+        food.setTen(foodDTO.getTen());
+        food.setGiaTien(foodDTO.getGiaTien());
+        food.setAvatar(foodDTO.getAvatar());
         return food;
     }
 }

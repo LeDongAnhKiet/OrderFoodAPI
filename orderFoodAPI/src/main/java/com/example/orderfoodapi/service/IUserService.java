@@ -4,4 +4,5 @@ import com.example.orderfoodapi.dto.UserDTO;
 
 public interface IUserService {
     UserDTO save(UserDTO userDTO);
+    void delete (int[] ids);
 }

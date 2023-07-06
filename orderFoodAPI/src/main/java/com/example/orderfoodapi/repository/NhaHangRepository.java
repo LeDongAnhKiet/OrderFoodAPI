@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface NhaHangRepository extends JpaRepository<Nhahang,Integer> {
+    Nhahang findNhahangById(int id);
+
 }
