@@ -1,13 +1,14 @@
 package com.example.orderfoodapi.dto;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 public class UudaiDTO {
     private Integer id;
     private String noiDung;
     private Integer giaTri;
-    private LocalDate ngayBatdau;
-    private LocalDate ngayKetThuc;
+    private Date ngayBatdau;
+    private Date ngayKetThuc;
     private String hinhAnh;
     private String loai;
     private Integer idNhaHangFood;
@@ -36,19 +37,19 @@ public class UudaiDTO {
         this.giaTri = giaTri;
     }
 
-    public LocalDate getNgayBatdau() {
+    public Date getNgayBatdau() {
         return this.ngayBatdau;
     }
 
-    public void setNgayBatdau(LocalDate ngayBatdau) {
+    public void setNgayBatdau(Date ngayBatdau) {
         this.ngayBatdau = ngayBatdau;
     }
 
-    public LocalDate getNgayKetThuc() {
+    public Date getNgayKetThuc() {
         return this.ngayKetThuc;
     }
 
-    public void setNgayKetThuc(LocalDate ngayKetThuc) {
+    public void setNgayKetThuc(Date ngayKetThuc) {
         this.ngayKetThuc = ngayKetThuc;
     }
 

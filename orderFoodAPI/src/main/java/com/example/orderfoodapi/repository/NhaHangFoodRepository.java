@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface NhaHangFoodRepository extends JpaRepository<NhahangFood,Integer> {
-
+    NhahangFood findNhahangFoodById(int id);
 }

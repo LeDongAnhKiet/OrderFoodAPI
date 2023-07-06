@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UuDaiRepository extends JpaRepository<Uudai,Integer> {
+    Uudai findUudaiById(int id);
 }
