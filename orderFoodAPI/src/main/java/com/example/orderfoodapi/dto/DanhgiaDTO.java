@@ -6,7 +6,6 @@ public class DanhgiaDTO {
     private Double giaTien;
     private Integer rate;
     private Integer idUser;
-    private Integer idDonHang;
     private Integer idNhaHangFood;
 
     public Integer getId() {
@@ -47,14 +46,6 @@ public class DanhgiaDTO {
 
     public void setIdUser(Integer idUser) {
         this.idUser = idUser;
-    }
-
-    public Integer getIdDonHang() {
-        return this.idDonHang;
-    }
-
-    public void setIdDonHang(Integer idDonHang) {
-        this.idDonHang = idDonHang;
     }
 
     public Integer getIdNhaHangFood() {

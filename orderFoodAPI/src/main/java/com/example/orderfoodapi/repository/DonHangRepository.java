@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface DonHangRepository extends JpaRepository<Donhang,Integer> {
+    Donhang findDonHangById(int id);
 }

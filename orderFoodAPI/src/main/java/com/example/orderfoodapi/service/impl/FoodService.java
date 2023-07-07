@@ -1,5 +1,4 @@
 package com.example.orderfoodapi.service.impl;
-
 import com.example.orderfoodapi.converter.FoodConverter;
 import com.example.orderfoodapi.dto.FoodDTO;
 import com.example.orderfoodapi.entity.Food;
@@ -10,6 +9,8 @@ import com.example.orderfoodapi.service.IFoodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -34,11 +35,27 @@ public class FoodService implements IFoodService {
         food = foodRepository.save(food);
         return foodConverter.toDTO(food);
     }
-
     @Override
     public void delete(int[] ids) {
         for(int item: ids){
             foodRepository.deleteById(item);
         }
+    }
+
+    @Override
+    public List<FoodDTO> findAll() {
+        List<Food> list = foodRepository.findAll();
+        List<FoodDTO> foodDTOS = new ArrayList<FoodDTO>();
+        for(Food f : list){
+            FoodDTO fdto = foodConverter.toDTO(f);
+            foodDTOS.add(fdto);
+        }
+        return foodDTOS;
+    }
+
+    @Override
+    public FoodDTO getFoodByID(int id) {
+        Food food = foodRepository.findFoodById(id);
+        return foodConverter.toDTO(food);
     }
 }
