@@ -44,6 +44,7 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<UserUudai> userUudai = new ArrayList<>();
 
-
+    @OneToMany(mappedBy = "user")
+    private List<Danhgia> danhgia = new ArrayList<>();
 
 }

@@ -31,10 +31,8 @@ public class Donhang {
     @ManyToOne
     @JoinColumn(name = "Id_user")
     private User user;
-    @OneToMany(mappedBy = "donhang")
-    private List<Chitietdonhang> chitietdonhang = new ArrayList<>();
 
     @OneToMany(mappedBy = "donhang")
-    private List<Danhgia> danhgia = new ArrayList<>();
+    private List<Chitietdonhang> chitietdonhang = new ArrayList<>();
 
 }

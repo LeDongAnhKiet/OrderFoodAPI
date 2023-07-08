@@ -1,5 +1,4 @@
 package com.example.orderfoodapi.service.impl;
-
 import com.example.orderfoodapi.converter.FoodConverter;
 import com.example.orderfoodapi.dto.FoodDTO;
 import com.example.orderfoodapi.entity.Food;
@@ -36,7 +35,6 @@ public class FoodService implements IFoodService {
         food = foodRepository.save(food);
         return foodConverter.toDTO(food);
     }
-
     @Override
     public void delete(int[] ids) {
         for(int item: ids){
@@ -60,4 +58,7 @@ public class FoodService implements IFoodService {
         Food food = foodRepository.findFoodById(id);
         return foodConverter.toDTO(food);
     }
+
 }
+
+

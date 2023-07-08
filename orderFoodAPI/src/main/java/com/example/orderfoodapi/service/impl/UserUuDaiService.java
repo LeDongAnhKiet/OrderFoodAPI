@@ -9,7 +9,6 @@ import com.example.orderfoodapi.repository.UserReponsitory;
 import com.example.orderfoodapi.repository.UserUuDaiRepository;
 import com.example.orderfoodapi.repository.UuDaiRepository;
 import com.example.orderfoodapi.service.IUserUuDaiSevice;
-import com.example.orderfoodapi.service.IUserUuDaiSevice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
