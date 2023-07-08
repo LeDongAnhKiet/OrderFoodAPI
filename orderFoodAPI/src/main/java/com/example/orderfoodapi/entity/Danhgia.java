@@ -24,12 +24,10 @@ public class Danhgia {
     private Integer rate;
 
     @ManyToOne
-    @JoinColumn(name = "Id_DonHang")
-    private Donhang donhang;
-
-    @ManyToOne
     @JoinColumn(name = "Id_NhaHangFood")
     private NhahangFood nhahangFood;
 
-
+    @ManyToOne
+    @JoinColumn(name = "Id_User")
+    private User user;
 }

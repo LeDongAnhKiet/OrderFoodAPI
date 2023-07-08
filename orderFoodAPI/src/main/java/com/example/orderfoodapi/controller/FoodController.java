@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,20 +24,20 @@ public class FoodController {
     public FoodDTO createFood(@RequestBody FoodDTO model) {
         return foodService.save(model);
     }
-    @PutMapping ("/food/{id}")
-    public FoodDTO updateFood(@RequestBody FoodDTO model, @PathVariable("id") int id)
-    {
+
+    @PutMapping("/food/{id}")
+    public FoodDTO updateFood(@RequestBody FoodDTO model, @PathVariable("id") int id) {
         model.setId(id);
         return foodService.save(model);
     }
+
     @DeleteMapping("/food")
-    public void deleteFood (@RequestBody int[] ids)
-    {
+    public void deleteFood(@RequestBody int[] ids) {
         foodService.delete(ids);
     }
 
     @GetMapping("/food")
-    public ResponseEntity<List<FoodDTO>> getAllFood(){
+    public ResponseEntity<List<FoodDTO>> getAllFood() {
         return ResponseEntity.ok().body(foodService.findAll());
     }
 
@@ -47,3 +46,4 @@ public class FoodController {
         return ResponseEntity.ok().body(foodService.getFoodByID(id));
     }
 }
+

@@ -47,5 +47,11 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<UserUudai> userUudai = new ArrayList<>();
 
+<<<<<<< HEAD
+=======
+    @OneToMany(mappedBy = "user")
+    private List<Danhgia> danhgia = new ArrayList<>();
+
+>>>>>>> f0e888a32533f7533fbd0a78999544d26c6ca0f2
 }
 

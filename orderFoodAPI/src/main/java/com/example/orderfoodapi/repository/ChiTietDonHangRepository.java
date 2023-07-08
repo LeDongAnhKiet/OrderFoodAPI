@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ChiTietDonHangRepository extends JpaRepository<Chitietdonhang,Integer> {
+    Chitietdonhang findChiTietDonHangById(int id);
 }
