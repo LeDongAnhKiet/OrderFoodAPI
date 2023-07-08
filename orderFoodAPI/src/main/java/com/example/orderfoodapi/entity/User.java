@@ -1,7 +1,9 @@
 package com.example.orderfoodapi.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.ArrayList;
@@ -9,7 +11,8 @@ import java.util.List;
 
 @Getter
 @Setter
-
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "user")
 public class User {
@@ -44,6 +47,5 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<UserUudai> userUudai = new ArrayList<>();
 
-
-
 }
+

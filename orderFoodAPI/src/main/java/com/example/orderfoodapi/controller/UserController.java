@@ -1,12 +1,16 @@
 package com.example.orderfoodapi.controller;
 
 
+import com.example.orderfoodapi.Response.LoginMesage;
+import com.example.orderfoodapi.dto.LoginDTO;
 import com.example.orderfoodapi.dto.UserDTO;
 import com.example.orderfoodapi.service.impl.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin
 public class UserController {
     @Autowired
     private UserService userService;
@@ -24,5 +28,12 @@ public class UserController {
     @DeleteMapping("/user")
     public void deleteUser(@RequestBody int[] ids){
         userService.delete(ids);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login (@RequestBody LoginDTO loginDTO)
+    {
+        LoginMesage loginMesage = userService.loginUser(loginDTO);
+        return ResponseEntity.ok(loginMesage);
     }
 }

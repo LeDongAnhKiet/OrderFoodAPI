@@ -1,5 +1,8 @@
 package com.example.orderfoodapi.dto;
 
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
 public class UserDTO {
     private Integer id;
     private String taiKhoan;
@@ -9,6 +12,10 @@ public class UserDTO {
     private Integer quyen;
     private String email;
     private String avatar;
+
+    public UserDTO() {
+
+    }
 
     public Integer getId() {
         return this.id;

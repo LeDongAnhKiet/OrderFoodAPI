@@ -2,16 +2,21 @@ package com.example.orderfoodapi.converter;
 
 import com.example.orderfoodapi.dto.UserDTO;
 import com.example.orderfoodapi.entity.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
 public class UserConverter {
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
     public User toEntity (UserDTO userDTO)
     {
         User user = new User();
         user.setId(userDTO.getId());
         user.setTaiKhoan(userDTO.getTaiKhoan());
-        user.setMatKhau(userDTO.getMatKhau());
+        user.setMatKhau(this.passwordEncoder.encode(userDTO.getMatKhau()));
         user.setDiaChi(userDTO.getDiaChi());
         user.setSoDienThoai(userDTO.getSoDienThoai());
         user.setQuyen(userDTO.getQuyen());
@@ -26,8 +31,8 @@ public class UserConverter {
         if(entity.getId() != null){
             user.setId(entity.getId());
         }
-        user.setTaiKhoan(entity.getTaiKhoan());
-        user.setMatKhau(entity.getMatKhau());
+//        user.setTaiKhoan(entity.getTaiKhoan());
+//        user.setMatKhau(entity.getMatKhau());
         user.setDiaChi(entity.getDiaChi());
         user.setSoDienThoai(entity.getSoDienThoai());
         user.setQuyen(entity.getQuyen());
