@@ -2,6 +2,7 @@ package com.example.orderfoodapi.controller;
 
 
 import com.example.orderfoodapi.Response.LoginMesage;
+import com.example.orderfoodapi.Response.RegisterMessage;
 import com.example.orderfoodapi.dto.LoginDTO;
 import com.example.orderfoodapi.dto.UserDTO;
 import com.example.orderfoodapi.service.impl.UserService;
@@ -16,9 +17,13 @@ public class UserController {
     private UserService userService;
     @PostMapping("/user")
     public UserDTO createUser(@RequestBody UserDTO model) {
-
         return userService.save(model);
+    }
 
+    @PostMapping("/register")
+    public ResponseEntity<?> register(@RequestBody UserDTO model){
+        RegisterMessage registerMessage = userService.registerUser(userService.save(model));
+        return  ResponseEntity.ok(registerMessage);
     }
     @PutMapping("/user/{id}")
     public UserDTO updateUser(@RequestBody UserDTO model, @PathVariable("id") int id){

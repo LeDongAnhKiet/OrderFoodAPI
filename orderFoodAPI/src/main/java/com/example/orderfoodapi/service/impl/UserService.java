@@ -1,6 +1,7 @@
 package com.example.orderfoodapi.service.impl;
 
 import com.example.orderfoodapi.Response.LoginMesage;
+import com.example.orderfoodapi.Response.RegisterMessage;
 import com.example.orderfoodapi.converter.UserConverter;
 import com.example.orderfoodapi.dto.LoginDTO;
 import com.example.orderfoodapi.dto.UserDTO;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -25,15 +27,38 @@ public class UserService implements IUserService {
     @Override
     public UserDTO save(UserDTO userDTO) {
         User user = new User();
-        if(userDTO.getId() != null){
+        boolean check = true;
+        List<User> listCheck = userReponsitory.findAll();
+
+        if (userDTO.getId() != null) {
             User oldUser = userReponsitory.findUserById(userDTO.getId());
-            user = userConverter.toEntity(userDTO,oldUser);
-        }
-        else {
+            user = userConverter.toEntity(userDTO, oldUser);
+            listCheck.remove(oldUser);
+        } else {
             user = userConverter.toEntity(userDTO);
         }
-        user = userReponsitory.save(user);
-        return userConverter.toDTO(user);
+        for (User u : listCheck) {
+            if (u.getTaiKhoan().equals(user.getTaiKhoan())) {
+                check = false;
+                break;
+            }
+        }
+        if (check) {
+            user = userReponsitory.save(user);
+            return userConverter.toDTO(user);
+        }
+        else
+            return null;
+
+    }
+
+    public RegisterMessage registerUser(UserDTO userDTO){
+        if(userDTO == null){
+            return new RegisterMessage("SignIn Failed", false);
+        }
+        else {
+            return new RegisterMessage("SignIn Success", true);
+        }
     }
 
     @Override
