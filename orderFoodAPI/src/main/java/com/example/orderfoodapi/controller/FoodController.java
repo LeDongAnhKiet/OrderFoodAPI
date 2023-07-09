@@ -45,5 +45,21 @@ public class FoodController {
     public ResponseEntity<FoodDTO> findFoodByID(@PathVariable("id") int id) {
         return ResponseEntity.ok().body(foodService.getFoodByID(id));
     }
+
+    @GetMapping("/food/name")
+    public ResponseEntity<List<FoodDTO>> getFoodbyName(@RequestParam(defaultValue = "") String kw){
+        return ResponseEntity.ok().body(foodService.findByName(kw));
+    }
+//    @RequestMapping(value = "/yourPath/{studentName}")
+//    public ResponseEntity<Student> findByName(@pathVariable("studentName") String name) {
+//        Student student = studentRepository.findByName(name);
+//
+//        if(student == null){
+//            //handler your own exception here
+//        }
+//
+//        //show the student as json object
+//        return ResponseEntity.status(HttpStatus.OK).body(student);
+//    }
 }
 

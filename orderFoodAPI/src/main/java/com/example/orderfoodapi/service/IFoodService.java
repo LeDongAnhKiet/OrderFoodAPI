@@ -10,6 +10,7 @@ public interface IFoodService {
     void delete(int[] ids);
     List<FoodDTO> findAll();
     FoodDTO getFoodByID(int id);
+    List<FoodDTO> findByName(String kw);
 
 }
 

@@ -59,6 +59,17 @@ public class FoodService implements IFoodService {
         return foodConverter.toDTO(food);
     }
 
+    @Override
+    public List<FoodDTO> findByName(String kw) {
+        List<Food> list = foodRepository.findByTenIsContainingIgnoreCase(kw);
+        List<FoodDTO> foodDTOS = new ArrayList<FoodDTO>();
+        for(Food f : list){
+            FoodDTO fdto = foodConverter.toDTO(f);
+            foodDTOS.add(fdto);
+        }
+        return foodDTOS;
+    }
+
 }
 
 
