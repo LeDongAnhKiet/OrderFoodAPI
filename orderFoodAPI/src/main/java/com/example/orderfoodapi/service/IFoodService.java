@@ -12,6 +12,7 @@ public interface IFoodService {
     FoodDTO getFoodByID(int id);
     List<FoodDTO> findByName(String kw);
 
+    List<FoodDTO> findFoodByLoaiFood(int id);
 }
 
 

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@CrossOrigin("*")
 @RestController
 public class FoodController {
     @Autowired
@@ -49,6 +49,11 @@ public class FoodController {
     @GetMapping("/food/name")
     public ResponseEntity<List<FoodDTO>> getFoodbyName(@RequestParam(defaultValue = "") String kw){
         return ResponseEntity.ok().body(foodService.findByName(kw));
+    }
+
+    @GetMapping ("/food/loaifood/{id}")
+    public ResponseEntity<List<FoodDTO>> getFoodByLoai(@PathVariable("id") int id){
+        return ResponseEntity.ok().body(foodService.findFoodByLoaiFood(id));
     }
 //    @RequestMapping(value = "/yourPath/{studentName}")
 //    public ResponseEntity<Student> findByName(@pathVariable("studentName") String name) {

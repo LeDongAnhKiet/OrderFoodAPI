@@ -70,6 +70,18 @@ public class FoodService implements IFoodService {
         return foodDTOS;
     }
 
+    @Override
+    public List<FoodDTO> findFoodByLoaiFood(int id) {
+        Loaifood l = loaiFoodRepository.findLoaifoodById(id);
+        List<Food> list = foodRepository.findAllByLoaifood(l);
+        List<FoodDTO> foodDTOS = new ArrayList<FoodDTO>();
+        for (Food f: list){
+            FoodDTO foodDTO = foodConverter.toDTO(f);
+            foodDTOS.add(foodDTO);
+        }
+        return foodDTOS;
+    }
+
 }
 
 

@@ -2,6 +2,7 @@ package com.example.orderfoodapi.repository;
 
 import com.example.orderfoodapi.dto.FoodDTO;
 import com.example.orderfoodapi.entity.Food;
+import com.example.orderfoodapi.entity.Loaifood;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -16,4 +17,6 @@ public interface FoodRepository extends JpaRepository<Food,Integer> {
     List<Food> findFoodsByTenContaining(String ten);
 
     List<Food> findByTenIsContainingIgnoreCase(String ten);
+
+    List<Food> findAllByLoaifood(Loaifood loaifood);
 }

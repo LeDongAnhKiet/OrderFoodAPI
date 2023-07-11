@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class UserDTO {
     private Integer id;
+    private String ten;
     private String taiKhoan;
     private String matKhau;
     private String diaChi;
@@ -12,6 +13,14 @@ public class UserDTO {
     private Integer quyen;
     private String email;
     private String avatar;
+
+    public String getTen() {
+        return ten;
+    }
+
+    public void setTen(String ten) {
+        this.ten = ten;
+    }
 
     public UserDTO() {
 

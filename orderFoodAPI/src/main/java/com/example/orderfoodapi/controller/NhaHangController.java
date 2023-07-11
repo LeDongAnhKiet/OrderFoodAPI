@@ -1,9 +1,13 @@
 package com.example.orderfoodapi.controller;
 
+import com.example.orderfoodapi.dto.FoodDTO;
 import com.example.orderfoodapi.dto.NhahangDTO;
 import com.example.orderfoodapi.service.INhaHangService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class NhaHangController {
@@ -24,5 +28,10 @@ public class NhaHangController {
     public void deleteNhahang(@RequestBody int[] ids)
     {
         nhaHangService.delete(ids);
+    }
+
+    @GetMapping("/nhahang/{id}")
+    public ResponseEntity<List<NhahangDTO>> findNhaHangByLoaiFood(@PathVariable("id") int id) {
+        return ResponseEntity.ok().body(nhaHangService.getAllNhaHang(id));
     }
 }

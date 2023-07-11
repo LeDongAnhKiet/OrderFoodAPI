@@ -15,6 +15,7 @@ public class UserConverter {
     {
         User user = new User();
         user.setId(userDTO.getId());
+        user.setTen(userDTO.getTen());
         user.setTaiKhoan(userDTO.getTaiKhoan());
         user.setMatKhau(this.passwordEncoder.encode(userDTO.getMatKhau()));
         user.setDiaChi(userDTO.getDiaChi());
@@ -31,6 +32,7 @@ public class UserConverter {
         if(entity.getId() != null){
             user.setId(entity.getId());
         }
+        user.setTen(entity.getTen());
 //        user.setTaiKhoan(entity.getTaiKhoan());
 //        user.setMatKhau(entity.getMatKhau());
         user.setDiaChi(entity.getDiaChi());
@@ -44,6 +46,7 @@ public class UserConverter {
     public User toEntity (UserDTO userDTO, User user)
     {
         user.setId(userDTO.getId());
+        user.setTen(userDTO.getTen());
         user.setTaiKhoan(userDTO.getTaiKhoan());
         user.setMatKhau(userDTO.getMatKhau());
         user.setDiaChi(userDTO.getDiaChi());
