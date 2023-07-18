@@ -55,6 +55,10 @@ public class FoodController {
     public ResponseEntity<List<FoodDTO>> getFoodByLoai(@PathVariable("id") int id){
         return ResponseEntity.ok().body(foodService.findFoodByLoaiFood(id));
     }
+    @GetMapping("/food/nhahang/{id}/")
+    public ResponseEntity<List<FoodDTO>> getFoodbyNhaHang(@PathVariable("id") int id) {
+        return ResponseEntity.ok().body(foodService.getListFoodByNhaHang(id));
+    }
 //    @RequestMapping(value = "/yourPath/{studentName}")
 //    public ResponseEntity<Student> findByName(@pathVariable("studentName") String name) {
 //        Student student = studentRepository.findByName(name);

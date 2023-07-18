@@ -40,4 +40,8 @@ public class NhaHangController {
     public  ResponseEntity<List<NhahangDTO>> findALLNhaHang(){
         return ResponseEntity.ok().body((nhaHangService.getlist()));
     }
+    @GetMapping("/nhahangtop/")
+    public ResponseEntity<List<NhahangDTO>> getNhaHangTop() {
+        return ResponseEntity.ok().body(nhaHangService.getListTop());
+    }
 }

@@ -11,6 +11,7 @@ public interface IFoodService {
     List<FoodDTO> findAll();
     FoodDTO getFoodByID(int id);
     List<FoodDTO> findByName(String kw);
+    List<FoodDTO> getListFoodByNhaHang(int id);
 
     List<FoodDTO> findFoodByLoaiFood(int id);
 }

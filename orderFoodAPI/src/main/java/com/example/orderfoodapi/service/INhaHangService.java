@@ -10,4 +10,5 @@ public interface INhaHangService {
     List<NhahangDTO> getAllNhaHang (int id);
 
     List<NhahangDTO> getlist();
+    List<NhahangDTO> getListTop();
 }
