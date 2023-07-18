@@ -5,6 +5,7 @@ import com.example.orderfoodapi.dto.NhahangDTO;
 import com.example.orderfoodapi.service.INhaHangService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,5 +34,10 @@ public class NhaHangController {
     @GetMapping("/nhahang/{id}")
     public ResponseEntity<List<NhahangDTO>> findNhaHangByLoaiFood(@PathVariable("id") int id) {
         return ResponseEntity.ok().body(nhaHangService.getAllNhaHang(id));
+    }
+
+    @GetMapping("/nhahang/")
+    public  ResponseEntity<List<NhahangDTO>> findALLNhaHang(){
+        return ResponseEntity.ok().body((nhaHangService.getlist()));
     }
 }

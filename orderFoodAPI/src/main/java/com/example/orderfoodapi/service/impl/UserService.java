@@ -54,10 +54,10 @@ public class UserService implements IUserService {
 
     public RegisterMessage registerUser(UserDTO userDTO){
         if(userDTO == null){
-            return new RegisterMessage("SignIn Failed", false);
+            return new RegisterMessage("Đăng kí thất bại", false);
         }
         else {
-            return new RegisterMessage("SignIn Success", true);
+            return new RegisterMessage("Đăng kí thành công", true);
         }
     }
 

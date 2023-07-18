@@ -56,4 +56,15 @@ public class NhaHangService implements INhaHangService {
         }
         return nhahangDTOS;
     }
+
+    @Override
+    public List<NhahangDTO> getlist() {
+        List<Nhahang> nhahang = nhaHangRepository.findAll();
+        List<NhahangDTO> nhahangDTO = new ArrayList<>();
+        for(Nhahang f : nhahang){
+            NhahangDTO nhahangD = nhaHangConverter.toDTO(f);
+            nhahangDTO.add(nhahangD);
+        }
+        return nhahangDTO;
+    }
 }
