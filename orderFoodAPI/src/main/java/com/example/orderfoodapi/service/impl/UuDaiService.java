@@ -1,7 +1,9 @@
 package com.example.orderfoodapi.service.impl;
 
 import com.example.orderfoodapi.converter.UuDaiConverter;
+import com.example.orderfoodapi.dto.FoodDTO;
 import com.example.orderfoodapi.dto.UudaiDTO;
+import com.example.orderfoodapi.entity.Food;
 import com.example.orderfoodapi.entity.NhahangFood;
 import com.example.orderfoodapi.entity.Uudai;
 import com.example.orderfoodapi.repository.NhaHangFoodRepository;
@@ -11,6 +13,9 @@ import com.example.orderfoodapi.repository.UuDaiRepository;
 import com.example.orderfoodapi.service.IUuDaiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class UuDaiService implements IUuDaiService {
@@ -45,5 +50,16 @@ public class UuDaiService implements IUuDaiService {
         {
             uuDaiRepository.deleteById(item);
         }
+    }
+
+    @Override
+    public List<UudaiDTO> uuDaiListByNhahang(int id) {
+        List<Uudai> list = uuDaiRepository.getUuDaiyNhaHang(id);
+        List<UudaiDTO> UuDaiDTOS = new ArrayList<UudaiDTO>();
+        for(Uudai u : list){
+            UudaiDTO udto = uuDaiConverter.toDTO(u);
+            UuDaiDTOS.add(udto);
+        }
+        return UuDaiDTOS;
     }
 }

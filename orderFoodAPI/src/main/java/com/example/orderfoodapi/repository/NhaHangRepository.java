@@ -18,4 +18,11 @@ public interface NhaHangRepository extends JpaRepository<Nhahang,Integer> {
 
     @Query(nativeQuery = true,value = "SELECT a.*   FROM orderfood.nhahang a join orderfood.nhahang_food b on a.id =b.id_nha_hang join orderfood.danhgia c on c.id_nha_hang_food = b.id group by a.id order by avg(c.rate) limit 10 ;")
     List<Nhahang> TopNhaHang();
+
+
+    @Query(nativeQuery = true, value = "SELECT avg(a.rate) FROM orderfood.danhgia a join orderfood.nhahang_food b on a.id_nha_hang_food = b.id_nha_hang where b.id_nha_hang = :id")
+    double getRatingOfRestautrant(int id);
+
+    @Query(nativeQuery = true, value = "SELECT count(a.id) FROM orderfood.danhgia a join orderfood.nhahang_food b on a.id_nha_hang_food = b.id_nha_hang where b.id_nha_hang = :id")
+    int countRateOFRestautrant(int id);
 }

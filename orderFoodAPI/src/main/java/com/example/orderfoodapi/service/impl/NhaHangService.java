@@ -78,4 +78,14 @@ public class NhaHangService implements INhaHangService {
         }
         return nhahangDTOS;
     }
+
+    @Override
+    public double getRatingOfRestarant(int id) {
+        return nhaHangRepository.getRatingOfRestautrant(id);
+    }
+
+    @Override
+    public int countRate(int id) {
+        return nhaHangRepository.countRateOFRestautrant(id);
+    }
 }

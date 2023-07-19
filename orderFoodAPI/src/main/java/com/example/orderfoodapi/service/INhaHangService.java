@@ -11,4 +11,8 @@ public interface INhaHangService {
 
     List<NhahangDTO> getlist();
     List<NhahangDTO> getListTop();
+
+    double getRatingOfRestarant(int id);
+
+    int countRate(int id);
 }

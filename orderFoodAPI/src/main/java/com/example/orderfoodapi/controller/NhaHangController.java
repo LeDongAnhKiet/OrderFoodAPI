@@ -4,11 +4,13 @@ import com.example.orderfoodapi.dto.FoodDTO;
 import com.example.orderfoodapi.dto.NhahangDTO;
 import com.example.orderfoodapi.service.INhaHangService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class NhaHangController {
@@ -43,5 +45,15 @@ public class NhaHangController {
     @GetMapping("/nhahangtop/")
     public ResponseEntity<List<NhahangDTO>> getNhaHangTop() {
         return ResponseEntity.ok().body(nhaHangService.getListTop());
+    }
+
+    @GetMapping("/nhahang/rating/{id}")
+    public  ResponseEntity<Double> getRating(@PathVariable("id") int id){
+        return ResponseEntity.ok().body(nhaHangService.getRatingOfRestarant(id));
+    }
+
+    @GetMapping("/nhahang/countrating/{id}")
+    public  ResponseEntity<Integer> countRating(@PathVariable("id") int id){
+        return ResponseEntity.ok().body(nhaHangService.countRate(id));
     }
 }
