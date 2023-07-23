@@ -22,8 +22,7 @@ public class UserController {
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody UserDTO model){
-        RegisterMessage registerMessage = userService.registerUser(userService.save(model));
-        return  ResponseEntity.ok(registerMessage);
+        return  ResponseEntity.ok(userService.save(userService.registerUser(model)));
     }
     @PutMapping("/user/{id}")
     public UserDTO updateUser(@RequestBody UserDTO model, @PathVariable("id") int id){
@@ -38,7 +37,6 @@ public class UserController {
     @PostMapping("/login")
     public ResponseEntity<?> login (@RequestBody LoginDTO loginDTO)
     {
-        LoginMesage loginMesage = userService.loginUser(loginDTO);
-        return ResponseEntity.ok(loginMesage);
+        return ResponseEntity.ok(userService.loginUser(loginDTO));
     }
 }

@@ -13,6 +13,11 @@ import com.example.orderfoodapi.service.IDonHangService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+
 @Service
 public class DonHangService implements IDonHangService {
 
@@ -45,5 +50,24 @@ public class DonHangService implements IDonHangService {
         for (int item : ids) {
             donHangRepository.deleteById(item);
         }
+    }
+
+    @Override
+    public DonhangDTO UpdateTrangThai(int id, Map<String, Object> obj) {
+        Donhang d = donHangRepository.findDonHangById(id);
+        int trangthai =Integer.parseInt(obj.get("trangThai").toString());
+        d.setTrangThai(trangthai);
+        d = donHangRepository.save(d);
+        return donHangConVerter.toDTO(d);
+    }
+
+
+    @Override
+    public List<DonhangDTO> getAll() {
+        List<DonhangDTO> list = new ArrayList<>();
+        for(Donhang d: donHangRepository.findAll()){
+            list.add(donHangConVerter.toDTO(d));
+        }
+        return  list;
     }
 }

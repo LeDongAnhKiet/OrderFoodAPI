@@ -13,6 +13,7 @@ public class DonHangConVerter {
 
         Donhang donHang = new Donhang();
         donHang.setId(donhangDTO.getId());
+        donHang.setTongtien(donhangDTO.getTongTien());
         donHang.setNgayGio(donhangDTO.getNgayGio());
         donHang.setGhiChu(donhangDTO.getGhiChu());
         donHang.setTrangThai(donhangDTO.getTrangThai());
@@ -26,6 +27,7 @@ public class DonHangConVerter {
         donHang.setNgayGio(entity.getNgayGio());
         donHang.setGhiChu(entity.getGhiChu());
         donHang.setTrangThai(entity.getTrangThai());
+        donHang.setTongTien(entity.getTongtien());
         return donHang;
     }
 

@@ -8,5 +8,5 @@ public interface IUserService {
     UserDTO save(UserDTO userDTO);
     void delete (int[] ids);
 
-    LoginMesage loginUser(LoginDTO loginDTO);
+    UserDTO loginUser(LoginDTO loginDTO);
 }

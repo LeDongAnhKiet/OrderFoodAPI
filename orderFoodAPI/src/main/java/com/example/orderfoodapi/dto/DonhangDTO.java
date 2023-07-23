@@ -9,6 +9,17 @@ public class DonhangDTO {
     private String ghiChu;
     private Integer idUser;
 
+
+
+    private double tongTien;
+    public double getTongTien() {
+        return tongTien;
+    }
+
+    public void setTongTien(double tongTien) {
+        this.tongTien = tongTien;
+    }
+
     public Integer getId() {
         return this.id;
     }

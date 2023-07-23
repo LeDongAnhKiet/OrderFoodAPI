@@ -52,12 +52,12 @@ public class UserService implements IUserService {
 
     }
 
-    public RegisterMessage registerUser(UserDTO userDTO){
+    public UserDTO registerUser(UserDTO userDTO){
         if(userDTO == null){
-            return new RegisterMessage("Đăng kí thất bại", false);
+            return null;
         }
         else {
-            return new RegisterMessage("Đăng kí thành công", true);
+            return userDTO;
         }
     }
 
@@ -69,7 +69,7 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public LoginMesage loginUser(LoginDTO loginDTO) {
+    public UserDTO loginUser(LoginDTO loginDTO) {
         String msg = "";
         User user1 = userReponsitory.findByTaiKhoan(loginDTO.getTaiKhoan());
         if (user1 != null) {
@@ -79,15 +79,15 @@ public class UserService implements IUserService {
             if (isPwdRight) {
                 Optional<User> user = userReponsitory.findByTaiKhoanAndMatKhau(loginDTO.getTaiKhoan(),encodedPassword);
                 if (user.isPresent()) {
-                    return new LoginMesage("Login Success", true);
+                    return userConverter.toDTO(user1);
                 } else {
-                    return new LoginMesage("Login Failed", false);
+                    return null;
                 }
             } else {
-                return new LoginMesage("password Not Match", false);
+                return null;
             }
         }else {
-            return new LoginMesage("Email not exits", false);
+            return null;
         }
     }
 

@@ -22,6 +22,9 @@ public class Donhang {
     @Column(name = "TrangThai")
     private Integer trangThai;
 
+    @Column(name = "TongTien")
+    private double tongtien;
+
     @Column(name = "NgayGio")
     private LocalDateTime ngayGio;
 
