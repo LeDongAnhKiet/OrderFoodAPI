@@ -15,4 +15,6 @@ public interface INhaHangService {
     double getRatingOfRestarant(int id);
 
     int countRate(int id);
+
+    List<NhahangDTO> getListNhaHangByFoodSeacrch(String kw);
 }

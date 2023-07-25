@@ -88,4 +88,13 @@ public class NhaHangService implements INhaHangService {
     public int countRate(int id) {
         return nhaHangRepository.countRateOFRestautrant(id);
     }
+
+    @Override
+    public List<NhahangDTO> getListNhaHangByFoodSeacrch(String kw) {
+        List<NhahangDTO> nhahangDTOS = new ArrayList<>();
+        for(Nhahang n : nhaHangRepository.getNhaHangByFoodSearch(kw)){
+            nhahangDTOS.add(nhaHangConverter.toDTO(n));
+        }
+        return nhahangDTOS;
+    }
 }

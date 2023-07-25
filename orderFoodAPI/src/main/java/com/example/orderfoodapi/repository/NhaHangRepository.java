@@ -25,4 +25,8 @@ public interface NhaHangRepository extends JpaRepository<Nhahang,Integer> {
 
     @Query(nativeQuery = true, value = "SELECT count(a.id) FROM orderfood.danhgia a join orderfood.nhahang_food b on a.id_nha_hang_food = b.id_nha_hang where b.id_nha_hang = :id")
     int countRateOFRestautrant(int id);
+
+
+    @Query(nativeQuery = true ,value = "SELECT a.* FROM orderfood.nhahang a join  orderfood.nhahang_food b on a.id = b.id_nha_hang join orderfood.food c on c.id = b.id_food where c.ten like concat('%',:kw,'%')" )
+    List<Nhahang> getNhaHangByFoodSearch(String kw);
 }

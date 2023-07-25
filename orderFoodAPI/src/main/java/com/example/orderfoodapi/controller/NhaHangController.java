@@ -5,6 +5,7 @@ import com.example.orderfoodapi.dto.NhahangDTO;
 import com.example.orderfoodapi.service.INhaHangService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -55,5 +56,10 @@ public class NhaHangController {
     @GetMapping("/nhahang/countrating/{id}")
     public  ResponseEntity<Integer> countRating(@PathVariable("id") int id){
         return ResponseEntity.ok().body(nhaHangService.countRate(id));
+    }
+
+    @GetMapping("/nhahang/food")
+    public ResponseEntity<List<NhahangDTO>> getListNhaHangbyFoodSearch(@RequestParam(defaultValue = "") String kw){
+        return new ResponseEntity<>(nhaHangService.getListNhaHangByFoodSeacrch(kw), HttpStatus.OK);
     }
 }
