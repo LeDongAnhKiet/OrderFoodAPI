@@ -56,6 +56,7 @@ Cơ sở dữ liệu của ứng dụng bao gồm các bảng như sau:
 - **Máy chủ**: Chạy Java 8 trở lên, hỗ trợ MySQL.
 - **MySQL**: Phiên bản 5.6 hoặc cao hơn.
 
+## Chi tiết [https://github.com/LeDongAnhKiet/FoodOrderReview]
 ---
 
 **Tháng 09 năm 2023**
